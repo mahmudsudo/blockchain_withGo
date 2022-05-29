@@ -1,1 +1,3 @@
-module github.com/tensor-programming/golang-blockchain
+module blockchain
+
+go 1.16

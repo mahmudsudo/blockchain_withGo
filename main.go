@@ -1,26 +1,14 @@
 package main
 
 import (
-	"blockchain/blocks"
-	"fmt"
-	"strconv"
+	"os"
+
+	"blockchain/cli"
 )
 
-
-
 func main() {
-	chain := blocks.InitBlockChain()
+	defer os.Exit(0)
 
-	chain.AddBlock("First Block after Genesis")
-	chain.AddBlock("Second Block after Genesis")
-	chain.AddBlock("Third Block after Genesis")
-	chain.AddBlock("fourth Block after Genesis")
-
-	for _, block := range chain.Blocks {
-		fmt.Printf("Previous Hash: %x\n", block.PrevHash)
-		fmt.Printf("Data in Block: %s\n", block.Data)
-		fmt.Printf("Hash: %x\n", block.Hash)
-		pow := blocks.NewProof(block)
-		fmt.Printf("pow : %s\n",strconv.FormatBool(pow.Validate()))
-	}
+	cmd := cli.CommandLine{}
+	cmd.Run()
 }
